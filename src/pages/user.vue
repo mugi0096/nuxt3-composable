@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { useLoginUser } from '../composables/states';
 
-const user = useLoginUser();
+const loginUser = useLoginUser();
+const { user } = loginUser;
 </script>
 
 <template>

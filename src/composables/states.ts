@@ -6,11 +6,23 @@ type User = {
   mail: string;
 };
 
-export const useLoginUser = () => 
-  useState<User>('login-user', () => {
-    return {
-      id: '123',
-      name: 'ueno',
-      mail: 'test@example.com'
-    };
-})
+export const useLoginUser = () => {
+  const state = useState<User>('login-user', () => ({
+    id: '123',
+    name: 'ueno',
+    mail: 'test@example.com',
+  }));
+  return {
+    user: readonly(state),
+    setName: setName(state),
+    setMail: setMail(state),
+  };
+};
+
+const setName = (state: Ref<User>) => {
+  return (name: string) => state.value.name = name;
+};
+
+const setMail = (state: Ref<User>) => {
+  return (mail: string) => state.value.mail = mail;
+};

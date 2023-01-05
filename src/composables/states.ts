@@ -1,6 +1,13 @@
+import { Ref } from 'vue';
+
+type User = {
+  id: string;
+  name: string;
+  mail: string;
+};
+
 export const useLoginUser = () => 
-  useState<{ id: string, name: string, mail: string }>('login-user', () => {
-    console.log('retrieving user info...');
+  useState<User>('login-user', () => {
     return {
       id: '123',
       name: 'ueno',
